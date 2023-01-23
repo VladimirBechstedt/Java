@@ -1,0 +1,78 @@
+import java.util.Scanner;
+public class program {
+    public static void main(String[] args) {
+        int tr = 0;
+        int f = 1;
+        Scanner iScanner = new Scanner(System.in);
+        System.out.printf("Введите число: ");
+        int n = iScanner.nextInt();
+
+        for(int i = 1; i < n; i++){
+            tr = tr + i;
+            f = f * i;
+        }
+        System.out.println("Треугольное число: " + tr + "\n" + "Факториал: " + f);
+        iScanner.close();
+    }
+
+    
+}
+
+public class program {
+    public static void main(String[] args) {
+        int number = 1000;
+        
+        for(int i = 1; i < number; i++){
+            boolean a = true;
+            
+            for(int j = 2; j < (i / 2 + 1); j++){
+                if(i % j == 0){
+                    a = false;
+                    break;
+                }
+
+            }
+            if(a){
+                System.out.println(i);
+            }
+        }
+    }  
+}
+
+public class program {
+    public static void main(String[] args) {
+        
+        Scanner iScanner = new Scanner(System.in);
+        System.out.printf("Выберите действие / , * , : , +: ");
+        String c = iScanner.nextLine();
+        System.out.printf("Введите число 1: ");
+        int a = iScanner.nextInt();
+        System.out.printf("Введите число 2: ");
+        int b = iScanner.nextInt();
+        int result = 0;
+
+        switch (c) {
+            case "/":
+                result = a / b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "+":
+                result = a + b;
+                break;
+            default:
+                break;
+        }
+
+
+        
+        System.out.println(result);
+        iScanner.close();
+    }
+
+    
+}
