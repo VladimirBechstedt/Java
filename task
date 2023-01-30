@@ -1,80 +1,65 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Random;
 
-public class task {
-    public static void main(String[] args) throws IOException{
-        int[] arr = new int[] {5, 7, 8, 6, 1, 4, 9, 2};
-        try{
-            FileWriter fw = new FileWriter("log.txt");
-            for(int c = 0; c < arr.length - 1; c++){
-                for(int i = 0; i < arr.length - 1; i++){
-                    if(arr[i] > arr[i + 1]){
-                        int interim = arr[i];
-                        arr[i] = arr[i + 1];
-                        arr[i + 1] = interim;
-                        for(int j = 0; j < arr.length; j++){
-                            String s = Integer.toString(arr[j]);
-                            fw.write(s + ' ');
-                        }
-                        fw.write("\n");
-                    }
-                }
-            }
-            fw.close();
-        }
-        catch (Exception e){
-            System.out.println("Ошибка");
-        }
-    }
-}
-
-//Задание 2
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
-
-public class task2 {
-    public static void main(String[] args) throws IOException{
-        BufferedReader read = new BufferedReader(new FileReader("journal.txt"));
-        FileWriter write = new FileWriter("newFile.txt");
-        String str;
-        while ((str = read.readLine()) != null) {
-            
-            String[] arr = str.split(",");
-            write.write("Студент " + arr[0] + " получил " + arr[1] + " по предмету " + arr[2] + ".\n");
-            System.out.printf("== %s ==\n", str);
-            }
-        read.close();
-        write.close();
-           
-
-    }
+public class task01 {
     
-}
-
-//Задание 3
-
-import java.util.Scanner;
-
-public class task3 {
     public static void main(String[] args) {
-        Scanner iScanner = new Scanner(System.in);
-        System.out.printf("Введите слово: ");
-        String n = iScanner.nextLine();
-        String[] str = n.split(""); 
-        Boolean a = true;
-        for(int i = 0; i < str.length / 2; i++){
-            
-            if(!str[i].equals(str[str.length - i - 1])){
-                a = false;
-                break;
+        Random random = new Random();
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        
+        for (int i = 0; i < 10; i++) 
+        {
+            arr.add(random.nextInt(100));
+        }
+        arr.sort(Comparator.naturalOrder());
+        for (Object x : arr)
+        {
+            System.out.print(x + " ");
+        }
+        System.out.print("\n");
+        for(int i = 0; i < arr.size(); i++){
+            if(arr.get(i) % 2 == 0){
+                arr.remove(i);
+                i--;
             }
         }
-        if(a) System.out.println("Это палиндром");
-        else System.out.println("Это не палиндром");
-        iScanner.close();
+        for (Object x : arr)
+        {
+            System.out.print(x + " ");
+        }
+    }
+}
+
+// Задание 2
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Random;
+
+public class task02 {
+    public static void main(String[] args) {
+        Random random = new Random();
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        
+        for (int i = 0; i < 10; i++) 
+        {
+            arr.add(random.nextInt(100));
+        }
+        arr.sort(Comparator.naturalOrder());
+        for (Object x : arr)
+        {
+            System.out.print(x + " ");
+        }
+        System.out.println("\n");
+        System.out.println("Максимальное: " + Collections.max(arr) + "\n");
+        System.out.println("Минимальное: " + Collections.min(arr) + "\n");
+        Integer sum = 0;
+        for(Integer a : arr){
+            sum += a;
+        }
+        sum = sum / arr.size();
+        System.out.println("Среднее: " + sum);
     }
 }
